@@ -1,0 +1,61 @@
+<resources>
+    <!-- Default screen margins, per the Android Design guidelines. -->
+    <dimen name="activity_horizontal_margin">16dp</dimen>
+    <dimen name="activity_vertical_margin">16dp</dimen>
+
+    <dimen name="activity_horizontal_padding">20dp</dimen>
+    <dimen name="activity_vertical_padding">20dp</dimen>
+    <dimen name="padding_large">40dp</dimen>
+    <dimen name="content_margin_top">10dp</dimen>
+    <dimen name="content_margin_left">30dp</dimen>
+    <dimen name="content_padding">16dp</dimen>
+
+    <dimen name="title_font_size">@dimen/text.size.medium</dimen>
+    <dimen name="content_font_size">12sp</dimen>
+
+    <dimen name="text.size.small">10sp</dimen>
+    <dimen name="text.size.medium">14sp</dimen>
+    <dimen name="text.size.large">18sp</dimen>
+    <dimen name="text.size.xlarge">22sp</dimen>
+
+    <dimen name="profile_image_size">100dp</dimen>
+    <dimen name="profile_image_border_width">2dp</dimen>
+    <dimen name="profile_image_margin">30dp</dimen>
+    <dimen name="divider_layout_height">1dp</dimen>
+    <dimen name="appointment_status_height">40dp</dimen>
+    <dimen name="spinner_doctor_height">45dp</dimen>
+
+    <dimen name="margin_small">5dp</dimen>
+    <dimen name="margin_medium">10dp</dimen>
+    <dimen name="margin_large">15dp</dimen>
+    <dimen name="margin_xtra_large">20dp</dimen>
+    <dimen name="margin_huge">40dp</dimen>
+
+    <dimen name="avatar_size_normal">60dp</dimen>
+    <dimen name="avatar_size_small">40dp</dimen>
+
+    <dimen name="card_margin_horizontal">12dp</dimen>
+    <dimen name="card_margin_vertical">8dp</dimen>
+    <dimen name="patient_name_size">18sp</dimen>
+    <dimen name="appointment_date_size">12sp</dimen>
+    <dimen name="cancel_appointment_label_size">11sp</dimen>
+
+    <dimen name="small_radius">3dp</dimen>
+
+    <dimen name="button_remove_size">40dp</dimen>
+    <dimen name="button_add_width">40dp</dimen>
+    <dimen name="button_add_height">20dp</dimen>
+
+    <dimen name="icon_arrow_width">7dp</dimen>
+    <dimen name="icon_arrow_height">15dp</dimen>
+
+    <dimen name="spinner_doctor_width">150dp</dimen>
+
+    <dimen name="small_elevation">2dp</dimen>
+    <dimen name="medium_elevation">4dp</dimen>
+    <dimen name="large_elevation">8dp</dimen>
+
+    <dimen name="fab_margin_right">8dp</dimen>
+    <dimen name="fab_margin_bottom">5dp</dimen>
+
+</resources>
