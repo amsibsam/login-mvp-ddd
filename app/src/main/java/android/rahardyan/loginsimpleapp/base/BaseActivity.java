@@ -29,6 +29,8 @@ public abstract class BaseActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         if (getLayout() != 0) {
             setContentView(getLayout());
+            setUpProgressDialog();
+            setUpAlertDialog();
         } else {
             Log.e(TAG, "please return layout ids on getLayout");
         }
@@ -41,28 +43,21 @@ public abstract class BaseActivity extends AppCompatActivity {
      */
     public abstract int getLayout();
 
-    private void setUpToolbar() {
+
+    public void setUpToolbar(boolean isBackButtonEnable, String title) {
         toolbar = (Toolbar) findViewById(R.id.toolbar);
 
         if (toolbar != null) {
             setSupportActionBar(toolbar);
-            getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+            getSupportActionBar().setDisplayHomeAsUpEnabled(isBackButtonEnable);
             toolbar.setNavigationOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
                     onBackPressed();
                 }
             });
+            toolbar.setTitle(title);
         }
-    }
-
-    /**
-     * set toolbar title
-     *
-     * @param title - string title
-     */
-    public void setToolbarTitle(String title) {
-        toolbar.setTitle(title);
     }
 
     private void setUpProgressDialog() {
