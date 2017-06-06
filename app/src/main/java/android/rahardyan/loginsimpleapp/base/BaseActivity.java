@@ -1,10 +1,14 @@
 package android.rahardyan.loginsimpleapp.base;
 
+import android.Manifest;
 import android.app.ProgressDialog;
 import android.content.DialogInterface;
+import android.content.pm.PackageManager;
 import android.os.Bundle;
 import android.rahardyan.loginsimpleapp.R;
 import android.support.annotation.Nullable;
+import android.support.v4.app.ActivityCompat;
+import android.support.v4.content.ContextCompat;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
@@ -23,6 +27,8 @@ public abstract class BaseActivity extends AppCompatActivity {
     private Toolbar toolbar;
     private ProgressDialog progressDialog;
     private AlertDialog alertDialog;
+    private static final int PERMISSION_REQUEST_CODE = 101;
+    protected boolean isPermissionDenied = true;
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
@@ -158,5 +164,28 @@ public abstract class BaseActivity extends AppCompatActivity {
             toast.setGravity(Gravity.CENTER, 0, 0);
             toast.show();
         }
+    }
+
+    /**
+     * request permission
+     *
+     * @param requestedPermission - array of permission
+     */
+    public void requestPermission(String[] requestedPermission) {
+        if (ContextCompat.checkSelfPermission(this,
+                Manifest.permission.CAMERA)
+                != PackageManager.PERMISSION_GRANTED || ContextCompat.checkSelfPermission(this,
+                Manifest.permission.WRITE_EXTERNAL_STORAGE)
+                != PackageManager.PERMISSION_GRANTED) {
+            isPermissionDenied = true;
+            ActivityCompat.requestPermissions(this,
+                    requestedPermission,
+                    PERMISSION_REQUEST_CODE);
+        } else if (ContextCompat.checkSelfPermission(this,
+                Manifest.permission.CAMERA)
+                == PackageManager.PERMISSION_GRANTED) {
+            isPermissionDenied = false;
+        }
+
     }
 }
