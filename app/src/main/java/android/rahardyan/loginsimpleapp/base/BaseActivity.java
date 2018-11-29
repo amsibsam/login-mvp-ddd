@@ -18,17 +18,21 @@ import android.widget.Toast;
  * Created by rahardyan on 31/05/17.
  */
 
-public abstract class BaseActivity extends AppCompatActivity {
+public abstract class BaseActivity<P extends BasePresenter> extends AppCompatActivity {
     private static final String TAG = BaseActivity.class.getSimpleName();
     private Toolbar toolbar;
     private ProgressDialog progressDialog;
     private AlertDialog alertDialog;
+    private P presenter;
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        fetchIntentExtra();
+        presenter = initPresenter();
         if (getLayout() != 0) {
             setContentView(getLayout());
+            setupUI();
         } else {
             Log.e(TAG, "please return layout ids on getLayout");
         }
@@ -39,7 +43,13 @@ public abstract class BaseActivity extends AppCompatActivity {
      *
      * @return layout id
      */
-    public abstract int getLayout();
+    protected abstract int getLayout();
+
+    protected abstract void setupUI();
+
+    protected abstract void fetchIntentExtra();
+
+    protected abstract P initPresenter();
 
     private void setUpToolbar() {
         toolbar = (Toolbar) findViewById(R.id.toolbar);
