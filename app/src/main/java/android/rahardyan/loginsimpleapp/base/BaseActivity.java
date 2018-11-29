@@ -51,12 +51,13 @@ public abstract class BaseActivity<P extends BasePresenter> extends AppCompatAct
 
     protected abstract P initPresenter();
 
-    private void setUpToolbar() {
-        toolbar = (Toolbar) findViewById(R.id.toolbar);
+    protected void setUpToolbar(String title, boolean isBackButtonEnabled) {
+        toolbar = findViewById(R.id.toolbar);
 
         if (toolbar != null) {
             setSupportActionBar(toolbar);
-            getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+            getSupportActionBar().setDisplayHomeAsUpEnabled(isBackButtonEnabled);
+            toolbar.setTitle(title);
             toolbar.setNavigationOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
@@ -64,15 +65,6 @@ public abstract class BaseActivity<P extends BasePresenter> extends AppCompatAct
                 }
             });
         }
-    }
-
-    /**
-     * set toolbar title
-     *
-     * @param title - string title
-     */
-    public void setToolbarTitle(String title) {
-        toolbar.setTitle(title);
     }
 
     private void setUpProgressDialog() {
@@ -99,7 +91,7 @@ public abstract class BaseActivity<P extends BasePresenter> extends AppCompatAct
     /**
      * show progress dialog
      */
-    public void showProgressDialog() {
+    protected void showProgressDialog() {
         if (progressDialog == null && !isFinishing()) {
             setUpProgressDialog();
             showProgressDialog();
@@ -113,7 +105,7 @@ public abstract class BaseActivity<P extends BasePresenter> extends AppCompatAct
         }
     }
 
-    private void showAlertDialog(String message) {
+    protected void showAlertDialog(String message) {
         if (alertDialog == null && !isFinishing()) {
             setUpAlertDialog();
             showAlertDialog(message);
@@ -131,7 +123,7 @@ public abstract class BaseActivity<P extends BasePresenter> extends AppCompatAct
     /**
      * dismiss progress dialog
      */
-    public void dismissProgressDialog() {
+    protected void dismissProgressDialog() {
         if (progressDialog != null && progressDialog.isShowing()) {
             runOnUiThread(new Runnable() {
                 @Override
@@ -145,7 +137,7 @@ public abstract class BaseActivity<P extends BasePresenter> extends AppCompatAct
     /**
      * handle activity when no internet connection
      */
-    public void onNoInternetConnection() {
+    protected void onNoInternetConnection() {
         dismissProgressDialog();
         showAlertDialog(getResources().getString(R.string.error_no_internet));
     }
@@ -155,7 +147,7 @@ public abstract class BaseActivity<P extends BasePresenter> extends AppCompatAct
      *
      * @param errorMessage - error message
      */
-    public void onRequestFailed(String errorMessage) {
+    protected void onRequestFailed(String errorMessage) {
         dismissProgressDialog();
         showAlertDialog(errorMessage);
     }
